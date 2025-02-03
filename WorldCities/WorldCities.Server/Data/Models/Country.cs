@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+using Microsoft.EntityFrameworkCore;
 
 namespace WorldCities.Server.Data.Models
 {
@@ -16,8 +17,10 @@ namespace WorldCities.Server.Data.Models
         public int Id { get; set; }
         public required string Name { get; set; }
 
+        [JsonPropertyName("iso2")]
         public required string ISO2 { get; set; }
 
+        [JsonPropertyName("iso3")]
         public required string ISO3 { get; set; }
 
         #endregion
@@ -25,7 +28,5 @@ namespace WorldCities.Server.Data.Models
         #region Navigation Properties
         public ICollection<City>? Cities { get; set; }
         #endregion
-
-
     }
 }
